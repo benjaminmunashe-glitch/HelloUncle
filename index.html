@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Uncle Ben – MSc student, National College of Ireland">
+  <title>Uncle Ben · MSc, National College of Ireland</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --text: #14171f;
+      --muted: #5b6372;
+      --accent: #2f5bea;
+      --accent-soft: rgba(47, 91, 234, 0.08);
+      --border: #e4e7ec;
+      --radius: 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1015;
+        --card: #171a21;
+        --text: #eef0f4;
+        --muted: #9aa3b2;
+        --accent: #7c9cff;
+        --accent-soft: rgba(124, 156, 255, 0.12);
+        --border: #262a33;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      background:
+        radial-gradient(circle at 15% 10%, var(--accent-soft), transparent 45%),
+        radial-gradient(circle at 85% 90%, var(--accent-soft), transparent 45%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      width: 100%;
+      max-width: 34rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.12);
+      animation: rise 0.6s ease-out both;
+    }
+
+    .date {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 9vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .role {
+      margin-top: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    hr {
+      border: none;
+      height: 3px;
+      width: 3rem;
+      background: var(--accent);
+      border-radius: 3px;
+      margin: 1.75rem 0;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .problem {
+      font-size: 1.1rem;
+    }
+
+    @media (min-width: 640px) {
+      main { padding: 3rem 2.75rem; }
+      .problem { font-size: 1.2rem; }
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <time class="date" id="today">&nbsp;</time>
+
+    <h1>Uncle Ben</h1>
+    <p class="role">MSc student, National College of Ireland</p>
+
+    <hr>
+
+    <p class="label">A problem I care about</p>
+    <p class="problem">
+      Brands pour money into influencer marketing but struggle to measure its real return, and I want to help them tell genuine influence apart from vanity metrics.
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      var el = document.getElementById("today");
+      var now = new Date();
+      el.textContent = now.toLocaleDateString("en-IE", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+      el.setAttribute("datetime", now.toISOString().slice(0, 10));
+    })();
+  </script>
+</body>
+</html>
